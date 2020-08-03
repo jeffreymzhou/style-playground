@@ -18,7 +18,7 @@ export default {
 
   LIGHT_BLUE_COLOR: 'rgb(241, 244, 255)',
 
-  BACKGROUND_COLOR: 'white',
+  BACKGROUND_COLOR: 'black',
 
   PRIMARY_TEXT_COLOR: 'rgb(113,113,113)',
   SECONDARY_TEXT_COLOR: 'rgb(130,130,130)',

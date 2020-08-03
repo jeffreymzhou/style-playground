@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import theme from '../styles/theme.style.js';
 // components
 
 import WeekHistory from '../components/History/WeekHistory/WeekHistory.js';
@@ -19,11 +19,11 @@ export default class HomeScreen extends React.Component {
   render() {
     // const navigation = useNavigation();
     return (
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <View style={{ flex: 1, backgroundColor: theme.BACKGROUND_COLOR }}>
         <ScrollView
           contentContainerStyle={{
             flex: 1,
-            backgroundColor: 'white',
+            backgroundColor: theme.BACKGROUND_COLOR,
             alignItems: 'center',
           }}
         >

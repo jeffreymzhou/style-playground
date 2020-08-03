@@ -18,6 +18,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
+import theme from './styles/theme.style.js';
+
 // components
 
 import TimerCircle from './components/TimerCircle.js';
@@ -29,6 +31,7 @@ import SelectTime from './screens/SelectTimeScreen.js';
 import AddTasks from './screens/AddTasksScreen.js';
 import OrderTasks from './screens/OrderTasksScreen.js';
 import TaskList from './screens/TaskListScreen.js';
+import NewTask from './screens/NewTaskScreen.js';
 
 function HomeScreen({ navigation, route }) {
   return (
@@ -63,7 +66,7 @@ function TasksScreen({ navigation, route }) {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: theme.BACKGROUND_COLOR,
       }}
     >
       <Text>Tasks Screen</Text>
@@ -75,7 +78,13 @@ function TasksScreen({ navigation, route }) {
 
 function SelectTimeScreen({ navigation, route }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: theme.BACKGROUND_COLOR,
+      }}
+    >
       <SelectTime />
       <TouchableOpacity
         activeOpacity={0.5}
@@ -98,7 +107,7 @@ function AddTasksScreen({ navigation, route }) {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: theme.BACKGROUND_COLOR,
       }}
     >
       <AddTasks />
@@ -123,7 +132,7 @@ function OrderTasksScreen({ navigation, route }) {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: theme.BACKGROUND_COLOR,
       }}
     >
       <OrderTasks />
@@ -148,7 +157,7 @@ function CurrentTaskScreen({ navigation, route }) {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: theme.BACKGROUND_COLOR,
       }}
     >
       <TimerCircle navigation={navigation} />
@@ -182,7 +191,7 @@ function FocusBlockStackScreen() {
     <FocusBlockStack.Navigator
       initialRouteName={'CreateFocusBlockStackScreen'}
       screenOptions={{
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: { backgroundColor: theme.BACKGROUND_COLOR },
       }}
     >
       <FocusBlockStack.Screen
@@ -204,7 +213,7 @@ function DoFocusBlockStackScreen() {
       headerMode={'float'}
       screenOptions={{
         title: 'Header',
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: { backgroundColor: theme.BACKGROUND_COLOR },
         headerStyle: {
           height: 50,
           width: '100%',
@@ -275,7 +284,7 @@ function CreateFocusBlockStackScreen() {
         headerStyle: {
           height: 50,
           width: '100%',
-          backgroundColor: 'white',
+          backgroundColor: theme.BACKGROUND_COLOR,
         },
         headerShown: true,
         header: ({ scene, previous, navigation }) => {
@@ -378,9 +387,9 @@ function RootStackScreen() {
         title: 'RootStack Header',
         headerStyle: {
           height: 60,
-          backgroundColor: 'white',
+          backgroundColor: theme.BACKGROUND_COLOR,
         },
-        cardStyle: { backgroundColor: 'white' },
+        cardStyle: { backgroundColor: theme.BACKGROUND_COLOR },
         header: ({ scene, previous, navigation }) => {
           const { options } = scene.descriptor;
           var progress = Animated.subtract(
@@ -473,8 +482,8 @@ function MainStackScreen() {
         headerShown: true,
         headerStyle: {
           height: 30,
-          backgroundColor: 'white',
-          cardStyle: { backgroundColor: 'white' },
+          backgroundColor: theme.BACKGROUND_COLOR,
+          cardStyle: { backgroundColor: theme.BACKGROUND_COLOR },
         },
         header: ({ scene, previous, navigation }) => {
           const { options } = scene.descriptor;
@@ -556,7 +565,7 @@ function App() {
 
 // function ModalScreen({ navigation }) {
 //   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', borderColor: '#DFDFDF', borderWidth: 1, borderRadius: 15, backgroundColor: 'white' }}>
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', borderColor: '#DFDFDF', borderWidth: 1, borderRadius: 15, backgroundColor: theme.BACKGROUND_COLOR }}>
 //       <Text style={{ fontSize: 30 }}>This is a modal!</Text>
 //       <Button onPress={() => navigation.goBack()} title="Dismiss" />
 //     </View>
@@ -568,16 +577,17 @@ function newTaskModal({ navigation }) {
     <View
       style={{
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
         borderColor: '#DFDFDF',
         borderWidth: 1,
-        borderRadius: 15,
-        backgroundColor: 'white',
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        backgroundColor: theme.BACKGROUND_COLOR,
+        alignItems: 'center',
       }}
     >
-      <Text style={{ fontSize: 30 }}>New Task</Text>
-      <Button onPress={() => navigation.goBack()} title='Dismiss' />
+      <NewTask />
+      {/* <Text style={{ fontSize: 30 }}>New Task</Text>
+      <Button onPress={() => navigation.goBack()} title='Dismiss' /> */}
     </View>
   );
 }
@@ -617,7 +627,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerNavButtonTextActive: {
-    color: 'white',
+    color: theme.BACKGROUND_COLOR,
     fontWeight: '600',
   },
   customHeader: {
@@ -669,7 +679,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bottomActionButtonText: {
-    color: 'white',
+    color: theme.BACKGROUND_COLOR,
     fontSize: 24,
     fontWeight: '500',
   },
