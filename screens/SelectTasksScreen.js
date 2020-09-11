@@ -12,15 +12,14 @@ import { Feather, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Haptics from 'expo-haptics';
 
+// components
+
+import TaskCard from '../components/TaskCard/TaskCard.js';
+
 import commonStyle from '../styles/common.style.js';
 import theme from '../styles/theme.style.js';
 
-// components
-
-import TaskCard2 from '../components/TaskCard/TaskCard2.js';
-// import Animated from 'react-native-reanimated';
-
-export default class OrderTasksScreen extends React.Component {
+export default class SelectTasksScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +31,7 @@ export default class OrderTasksScreen extends React.Component {
   taskCardGenerator() {
     var tasks = [];
     for (var i = 0; i < 5; i++) {
-      tasks.push(<TaskCard2 />);
+      tasks.push(<TaskCard />);
     }
     return tasks;
   }
@@ -58,12 +57,14 @@ export default class OrderTasksScreen extends React.Component {
           style={[commonStyle.solidButton, commonStyle.bottomButton]}
           onPress={() => {
             Haptics.impactAsync();
-            this.props.navigation.navigate('DoFocusBlockStackScreen');
+            this.props.navigation.navigate('page3');
           }}
         >
-          <Text style={commonStyle.solidButtonText}>finish</Text>
+          <Text style={commonStyle.solidButtonText}>next</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({});

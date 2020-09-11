@@ -9,6 +9,7 @@ import {
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import theme from '../styles/theme.style.js';
+import commonStyle from '../styles/common.style';
 // components
 
 import WeekHistory from '../components/History/WeekHistory/WeekHistory.js';
@@ -16,17 +17,12 @@ import FocusRecommendation from '../components/FocusRecommendation.js';
 import DailyQuote from '../components/DailyQuote.js';
 
 export default class HomeScreen extends React.Component {
+  // navigation = useNavigation();
   render() {
     // const navigation = useNavigation();
     return (
-      <View style={{ flex: 1, backgroundColor: theme.BACKGROUND_COLOR }}>
-        <ScrollView
-          contentContainerStyle={{
-            flex: 1,
-            backgroundColor: theme.BACKGROUND_COLOR,
-            alignItems: 'center',
-          }}
-        >
+      <View style={{ backgroundColor: theme.BACKGROUND_COLOR }}>
+        <ScrollView contentContainerStyle={commonStyle.screenContainerStyle}>
           <View style={{ width: '90%' }}>
             <WeekHistory />
             <DailyQuote />
@@ -66,6 +62,13 @@ export default class HomeScreen extends React.Component {
             </View>
           </View>
         </ScrollView>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={[commonStyle.solidButton, commonStyle.bottomButton]}
+          onPress={() => this.props.navigation.navigate('FocusBlock')}
+        >
+          <Text style={commonStyle.solidButtonText}>get stuff done today</Text>
+        </TouchableOpacity>
       </View>
     );
   }

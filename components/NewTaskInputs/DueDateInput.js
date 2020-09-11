@@ -98,7 +98,7 @@ export default class TaskCard extends React.Component {
     );
   }
 
-  select(dueDate) {
+  select(dueDateString) {
     Haptics.impactAsync();
     this.setState({ selectedDueDate: dueDate });
     this.props.select(dueDate);
@@ -171,7 +171,7 @@ export default class TaskCard extends React.Component {
           <TouchableOpacity
             activeOpacity={1}
             onPress={() => {
-              this.onDurationSelect('10 m');
+              this.select('today');
             }}
             style={
               this.state.selectedDuration === '10 m'

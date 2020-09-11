@@ -95,6 +95,13 @@ export default StyleSheet.create({
     fontSize: theme.FONT_SIZE_LARGE,
     fontWeight: '500',
   },
+  taskTitleTextStrikethrough: {
+    color: theme.MEDIUM_GREY_COLOR,
+    fontSize: theme.FONT_SIZE_LARGE,
+    fontWeight: '400',
+    // textDecorationLine: 'line-through',
+    // textDecorationStyle: 'solid',
+  },
   taskDetailsText: {
     color: theme.PRIMARY_TEXT_COLOR,
     fontSize: theme.FONT_SIZE_SMALL,

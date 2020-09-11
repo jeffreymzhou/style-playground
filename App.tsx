@@ -8,6 +8,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Animated,
   ScrollView,
 } from 'react-native';
@@ -26,159 +27,161 @@ import TimerCircle from './components/TimerCircle.js';
 
 // screens
 
-import Home from './screens/HomeScreen.js';
-import SelectTime from './screens/SelectTimeScreen.js';
-import AddTasks from './screens/AddTasksScreen.js';
-import OrderTasks from './screens/OrderTasksScreen.js';
-import TaskList from './screens/TaskListScreen.js';
-import NewTask from './screens/NewTaskScreen.js';
+import HomeScreen from './screens/HomeScreen.js';
+import SelectTimeScreen from './screens/SelectTimeScreen.js';
+import SelectTasksScreen from './screens/SelectTasksScreen.js';
+import OrderTasksScreen from './screens/OrderTasksScreen.js';
+import TaskListScreen from './screens/TaskListScreen.js';
+import NewTaskScreen from './screens/NewTaskScreen.js';
+import AllTasksScreen from './screens/AllTasksScreen.js';
 
-function HomeScreen({ navigation, route }) {
-  return (
-    <View style={{ flex: 1 }}>
-      <Home />
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.bottomActionButton}
-        onPress={() => navigation.navigate('FocusBlock')}
-      >
-        <Text style={styles.bottomActionButtonText}>get stuff done today</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+// storage
 
-const Tab = createBottomTabNavigator();
+import DataCache from './storage/Storage.js';
 
-function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name='Home' component={HomeScreen} />
-      <Tab.Screen name='AddsTask' component={AddTasksScreen} />
-    </Tab.Navigator>
-  );
-}
+// parser
 
-function TasksScreen({ navigation, route }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: theme.BACKGROUND_COLOR,
-      }}
-    >
-      <Text>Tasks Screen</Text>
-      <Button title='Go to Home' onPress={() => navigation.navigate('Home')} />
-      <Button title='Go back' onPress={() => navigation.goBack()} />
-    </View>
-  );
-}
+import TimeParser from './utils/TimeParser.js';
 
-function SelectTimeScreen({ navigation, route }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: theme.BACKGROUND_COLOR,
-      }}
-    >
-      <SelectTime />
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.bottomActionButton}
-        onPress={() => {
-          Haptics.impactAsync();
-          navigation.navigate('page2');
-        }}
-      >
-        <Text style={styles.bottomActionButtonText}>next</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+// redux
 
-function AddTasksScreen({ navigation, route }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: theme.BACKGROUND_COLOR,
-      }}
-    >
-      <AddTasks />
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.bottomActionButton}
-        onPress={() => {
-          Haptics.impactAsync();
-          navigation.navigate('page3');
-        }}
-      >
-        <Text style={styles.bottomActionButtonText}>next</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+const initialState = {
+  counter: 0,
+};
 
-function OrderTasksScreen({ navigation, route }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: theme.BACKGROUND_COLOR,
-      }}
-    >
-      <OrderTasks />
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={styles.bottomActionButton}
-        onPress={() => {
-          Haptics.impactAsync();
-          navigation.navigate('DoFocusBlockStackScreen');
-        }}
-      >
-        <Text style={styles.bottomActionButtonText}>finish</Text>
-      </TouchableOpacity>
-    </View>
-  );
-}
+const reducer = (state = initialState) => {
+  return state;
+};
+const store = createStore(reducer);
 
-function CurrentTaskScreen({ navigation, route }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: theme.BACKGROUND_COLOR,
-      }}
-    >
-      <TimerCircle navigation={navigation} />
-    </View>
-  );
-}
+// const Tab = createBottomTabNavigator();
 
-function TaskListScreen({ navigation, route }) {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        // backgroundColor: 'pink',
-      }}
-    >
-      <TaskList navigation={navigation} />
-    </View>
-  );
-}
+// function MyTabs() {
+//   return (
+//     <Tab.Navigator>
+//       <Tab.Screen name='Home' component={HomeScreen} />
+//       <Tab.Screen name='AddsTask' component={AddTasksScreen} />
+//     </Tab.Navigator>
+//   );
+// }
+
+// function TasksScreen({ navigation, route }) {
+//   return (
+//     <View
+//       style={{
+//         flex: 1,
+//         backgroundColor: theme.BACKGROUND_COLOR,
+//       }}
+//     >
+//       <AllTasks />
+//     </View>
+//   );
+// }
+
+// function SelectTimeScreen({ navigation, route }) {
+//   return (
+//     <View
+//       style={{
+//         flex: 1,
+//         alignItems: 'center',
+//         backgroundColor: theme.BACKGROUND_COLOR,
+//       }}
+//     >
+//       <SelectTime />
+//       <TouchableOpacity
+//         activeOpacity={0.5}
+//         style={styles.bottomActionButton}
+//         onPress={() => {
+//           Haptics.impactAsync();
+//           navigation.navigate('page2');
+//         }}
+//       >
+//         <Text style={styles.bottomActionButtonText}>next</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// }
+
+// function AddTasksScreen({ navigation, route }) {
+//   return (
+//     <View
+//       style={{
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: theme.BACKGROUND_COLOR,
+//       }}
+//     >
+//       <AddTasks />
+//       <TouchableOpacity
+//         activeOpacity={0.5}
+//         style={styles.bottomActionButton}
+//         onPress={() => {
+//           Haptics.impactAsync();
+//           navigation.navigate('page3');
+//         }}
+//       >
+//         <Text style={styles.bottomActionButtonText}>next</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// }
+
+// function OrderTasksScreen({ navigation, route }) {
+//   return (
+//     <View
+//       style={{
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: theme.BACKGROUND_COLOR,
+//       }}
+//     >
+//       <OrderTasks />
+//       <TouchableOpacity
+//         activeOpacity={0.5}
+//         style={styles.bottomActionButton}
+//         onPress={() => {
+//           Haptics.impactAsync();
+//           navigation.navigate('DoFocusBlockStackScreen');
+//         }}
+//       >
+//         <Text style={styles.bottomActionButtonText}>finish</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+// }
+
+// function CurrentTaskScreen({ navigation, route }) {
+//   return (
+//     <View
+//       style={{
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         backgroundColor: theme.BACKGROUND_COLOR,
+//       }}
+//     >
+//       <TimerCircle navigation={navigation} />
+//     </View>
+//   );
+// }
+
+// function TaskListScreen({ navigation, route }) {
+//   return (
+//     <View
+//       style={{
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//       }}
+//     >
+//       <TaskList navigation={navigation} />
+//     </View>
+//   );
+// }
 
 const MainStack = createStackNavigator();
 const RootStack = createStackNavigator();
@@ -266,10 +269,10 @@ function DoFocusBlockStackScreen() {
         name='TaskList'
         component={TaskListScreen}
       ></DoFocusBlockStack.Screen>
-      <DoFocusBlockStack.Screen
+      {/* <DoFocusBlockStack.Screen
         name='CurrentTask'
         component={CurrentTaskScreen}
-      ></DoFocusBlockStack.Screen>
+      ></DoFocusBlockStack.Screen> */}
     </DoFocusBlockStack.Navigator>
   );
 }
@@ -368,7 +371,7 @@ function CreateFocusBlockStackScreen() {
       ></CreateFocusBlockStack.Screen>
       <CreateFocusBlockStack.Screen
         name='page2'
-        component={AddTasksScreen}
+        component={SelectTasksScreen}
       ></CreateFocusBlockStack.Screen>
       <CreateFocusBlockStack.Screen
         name='page3'
@@ -384,11 +387,10 @@ function RootStackScreen() {
       mode='modal'
       headerMode={'float'}
       screenOptions={{
-        title: 'RootStack Header',
-        headerStyle: {
-          height: 60,
-          backgroundColor: theme.BACKGROUND_COLOR,
-        },
+        // headerStyle: {
+        //   height: 60,
+        //   backgroundColor: theme.BACKGROUND_COLOR,
+        // },
         cardStyle: { backgroundColor: theme.BACKGROUND_COLOR },
         header: ({ scene, previous, navigation }) => {
           const { options } = scene.descriptor;
@@ -398,7 +400,7 @@ function RootStackScreen() {
           );
           const spin = progress.interpolate({
             inputRange: [0, 1],
-            outputRange: ['0deg', '135deg'],
+            outputRange: ['0deg', '45deg'],
           });
           const mainTitleOpacity = progress.interpolate({
             inputRange: [0, 1],
@@ -409,8 +411,10 @@ function RootStackScreen() {
           switch (scene.route.name) {
             case 'NewTaskModal':
               headerTitle = 'new task';
+              break;
             case 'FocusBlock':
               headerTitle = 'new focus block';
+              break;
             default:
               headerTitle = scene.route.name;
           }
@@ -434,7 +438,9 @@ function RootStackScreen() {
                 <Animated.View
                   style={[{ opacity: mainTitleOpacity }, styles.headerTitle]}
                 >
-                  <Text style={styles.headerTitleText}>tuesday, Jul 21</Text>
+                  <Text style={styles.headerTitleText}>
+                    {TimeParser.currentDateHeader()}
+                  </Text>
                 </Animated.View>
                 <Animated.View
                   style={[{ opacity: progress }, styles.headerTitle]}
@@ -452,7 +458,11 @@ function RootStackScreen() {
                   );
                 }}
               >
-                <Animated.View style={{ transform: [{ rotate: spin }] }}>
+                <Animated.View
+                  style={{
+                    transform: [{ rotate: spin }],
+                  }}
+                >
                   <Feather style={styles.headerButton} name='plus' />
                 </Animated.View>
               </TouchableOpacity>
@@ -466,7 +476,7 @@ function RootStackScreen() {
         component={MainStackScreen}
         options={{ headerShown: true }}
       />
-      <RootStack.Screen name='NewTaskModal' component={newTaskModal} />
+      <RootStack.Screen name='NewTaskModal' component={NewTaskScreen} />
       <RootStack.Screen name='FocusBlock' component={FocusBlockStackScreen} />
     </RootStack.Navigator>
   );
@@ -543,7 +553,7 @@ function MainStackScreen() {
       <MainStack.Screen name='Home' component={HomeScreen} />
       <MainStack.Screen
         name='Tasks'
-        component={TasksScreen}
+        component={AllTasksScreen}
         initialParams={{ text: 'default text' }}
       />
     </MainStack.Navigator>
@@ -553,13 +563,16 @@ function MainStackScreen() {
 const Drawer = createDrawerNavigator();
 
 function App() {
+  global.storage = new DataCache();
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name='Root' component={RootStackScreen} />
-        <Drawer.Screen name='Home' component={HomeScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name='Root' component={RootStackScreen} />
+          <Drawer.Screen name='Other Screen' component={HomeScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 
@@ -585,9 +598,7 @@ function newTaskModal({ navigation }) {
         alignItems: 'center',
       }}
     >
-      <NewTask />
-      {/* <Text style={{ fontSize: 30 }}>New Task</Text>
-      <Button onPress={() => navigation.goBack()} title='Dismiss' /> */}
+      <NewTaskScreen navigation={navigation} />
     </View>
   );
 }
@@ -634,6 +645,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+    height: 60,
+    backgroundColor: theme.BACKGROUND_COLOR,
   },
   customHeaderLeft: {
     flex: 1,
@@ -657,6 +670,10 @@ const styles = StyleSheet.create({
   headerButton: {
     fontSize: 35,
     color: '#6A7AB7',
+  },
+  headerButtonRed: {
+    fontSize: 35,
+    color: theme.LIGHT_VIOLET_COLOR,
   },
   headerTitle: {
     alignSelf: 'center',
