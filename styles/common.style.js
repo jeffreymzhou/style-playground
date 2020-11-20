@@ -6,7 +6,7 @@ export default StyleSheet.create({
   screenContainerStyle: {
     backgroundColor: theme.BACKGROUND_COLOR,
     alignItems: 'center',
-    height: '100%',
+    // height: '100%',
   },
   primaryHeader: {},
   secondaryHeader: {},

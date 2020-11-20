@@ -36,14 +36,18 @@ export default class SelectTasksScreen extends React.Component {
     return tasks;
   }
 
+  addTask() {
+    addTaskAction("ACTION NAME", param)
+  }
+
   render() {
     return (
-      <View style={{ backgroundColor: theme.BACKGROUND_COLOR }}>
-        <ScrollView contentContainerStyle={commonStyle.screenContainerStyle}>
+      <View style={{ backgroundColor: theme.BACKGROUND_COLOR, flex: 1,
+        flexDirection: 'column', }}>
+        <ScrollView contentContainerStyle={[ commonStyle.screenContainerStyle]}>
           <View
             style={{
               width: '90%',
-              height: '100%',
               flexDirection: 'column',
               marginTop: 20,
               marginBottom: 20,

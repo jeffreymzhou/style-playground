@@ -34,6 +34,7 @@ import OrderTasksScreen from './screens/OrderTasksScreen.js';
 import TaskListScreen from './screens/TaskListScreen.js';
 import NewTaskScreen from './screens/NewTaskScreen.js';
 import AllTasksScreen from './screens/AllTasksScreen.js';
+// import CurrentTaskScreen from './components/TimerCircle.js';
 
 // storage
 
@@ -56,118 +57,20 @@ const reducer = (state = initialState) => {
 };
 const store = createStore(reducer);
 
-// const Tab = createBottomTabNavigator();
-
-// function MyTabs() {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen name='Home' component={HomeScreen} />
-//       <Tab.Screen name='AddsTask' component={AddTasksScreen} />
-//     </Tab.Navigator>
-//   );
-// }
-
-// function TasksScreen({ navigation, route }) {
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         backgroundColor: theme.BACKGROUND_COLOR,
-//       }}
-//     >
-//       <AllTasks />
-//     </View>
-//   );
-// }
-
-// function SelectTimeScreen({ navigation, route }) {
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         alignItems: 'center',
-//         backgroundColor: theme.BACKGROUND_COLOR,
-//       }}
-//     >
-//       <SelectTime />
-//       <TouchableOpacity
-//         activeOpacity={0.5}
-//         style={styles.bottomActionButton}
-//         onPress={() => {
-//           Haptics.impactAsync();
-//           navigation.navigate('page2');
-//         }}
-//       >
-//         <Text style={styles.bottomActionButtonText}>next</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// }
-
-// function AddTasksScreen({ navigation, route }) {
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         backgroundColor: theme.BACKGROUND_COLOR,
-//       }}
-//     >
-//       <AddTasks />
-//       <TouchableOpacity
-//         activeOpacity={0.5}
-//         style={styles.bottomActionButton}
-//         onPress={() => {
-//           Haptics.impactAsync();
-//           navigation.navigate('page3');
-//         }}
-//       >
-//         <Text style={styles.bottomActionButtonText}>next</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// }
-
-// function OrderTasksScreen({ navigation, route }) {
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         backgroundColor: theme.BACKGROUND_COLOR,
-//       }}
-//     >
-//       <OrderTasks />
-//       <TouchableOpacity
-//         activeOpacity={0.5}
-//         style={styles.bottomActionButton}
-//         onPress={() => {
-//           Haptics.impactAsync();
-//           navigation.navigate('DoFocusBlockStackScreen');
-//         }}
-//       >
-//         <Text style={styles.bottomActionButtonText}>finish</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// }
-
-// function CurrentTaskScreen({ navigation, route }) {
-//   return (
-//     <View
-//       style={{
-//         flex: 1,
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         backgroundColor: theme.BACKGROUND_COLOR,
-//       }}
-//     >
-//       <TimerCircle navigation={navigation} />
-//     </View>
-//   );
-// }
+function CurrentTaskScreen({ navigation, route }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: theme.BACKGROUND_COLOR,
+      }}
+    >
+      <TimerCircle navigation={navigation} />
+    </View>
+  );
+}
 
 // function TaskListScreen({ navigation, route }) {
 //   return (
@@ -269,10 +172,10 @@ function DoFocusBlockStackScreen() {
         name='TaskList'
         component={TaskListScreen}
       ></DoFocusBlockStack.Screen>
-      {/* <DoFocusBlockStack.Screen
+      <DoFocusBlockStack.Screen
         name='CurrentTask'
         component={CurrentTaskScreen}
-      ></DoFocusBlockStack.Screen> */}
+      ></DoFocusBlockStack.Screen>
     </DoFocusBlockStack.Navigator>
   );
 }
@@ -292,39 +195,40 @@ function CreateFocusBlockStackScreen() {
         headerShown: true,
         header: ({ scene, previous, navigation }) => {
           const { options } = scene.descriptor;
-          var progress1 = Animated.subtract(
-            scene.route.name === 'page3' || scene.route.name === 'page2'
-              ? 1
-              : scene.progress.current,
-            scene.route.name === 'page1' ? 1 : 0
-          );
-          var progress2 = Animated.subtract(
-            scene.route.name === 'page1' || scene.route.name === 'page3'
-              ? 1
-              : scene.progress.current,
-            scene.route.name === 'page2' ? 1 : 0
-          );
-          var progress3 = Animated.subtract(
-            scene.route.name === 'page1' || scene.route.name === 'page2'
-              ? 1
-              : scene.progress.current,
-            scene.route.name === 'page3' ? 1 : 0
-          );
-          const page1 = progress1.interpolate({
-            inputRange: [0, 1],
-            outputRange: [1, 0],
-          });
-          const page2 = progress2.interpolate({
-            inputRange: [0, 1],
-            outputRange: [1, 0],
-          });
-          const page3 = progress3.interpolate({
-            inputRange: [0, 1],
-            outputRange: [1, 0],
-          });
+          var step1 = scene.route.name === 'page2' ? 1 : 2
+          // var progress1 = Animated.subtract(
+          //   scene.route.name === 'page3' || scene.route.name === 'page2'
+          //     ? 1
+          //     : scene.progress.current,
+          //   scene.route.name === 'page1' ? 1 : 0
+          // );
+          // var progress2 = Animated.subtract(
+          //   scene.route.name === 'page1' || scene.route.name === 'page3'
+          //     ? 1
+          //     : scene.progress.current,
+          //   scene.route.name === 'page2' ? 1 : 0
+          // );
+          // var progress3 = Animated.subtract(
+          //   scene.route.name === 'page1' || scene.route.name === 'page2'
+          //     ? 1
+          //     : scene.progress.current,
+          //   scene.route.name === 'page3' ? 1 : 0
+          // );
+          // const page1 = progress1.interpolate({
+          //   inputRange: [0, 1],
+          //   outputRange: [1, 0],
+          // });
+          // const page2 = progress2.interpolate({
+          //   inputRange: [0, 1],
+          //   outputRange: [1, 0],
+          // });
+          // const page3 = progress3.interpolate({
+          //   inputRange: [0, 1],
+          //   outputRange: [1, 0],
+          // });
           return (
             <View style={[options.headerStyle, styles.navIndicatorHeader]}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={styles.navIndicatorHeaderColumn}
                 onPress={() => {
                   Haptics.impactAsync();
@@ -335,7 +239,7 @@ function CreateFocusBlockStackScreen() {
                 <Animated.View
                   style={[styles.navIndicatorBarActive, { opacity: page1 }]}
                 />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity
                 style={styles.navIndicatorHeaderColumn}
                 onPress={() => {
@@ -345,7 +249,7 @@ function CreateFocusBlockStackScreen() {
               >
                 <View style={styles.navIndicatorBar} />
                 <Animated.View
-                  style={[styles.navIndicatorBarActive, { opacity: page2 }]}
+                  style={[styles.navIndicatorBarActive, { opacity: 1 }]}
                 />
               </TouchableOpacity>
               <TouchableOpacity
@@ -357,7 +261,7 @@ function CreateFocusBlockStackScreen() {
               >
                 <View style={styles.navIndicatorBar} />
                 <Animated.View
-                  style={[styles.navIndicatorBarActive, { opacity: page3 }]}
+                  style={[styles.navIndicatorBarActive, { opacity: 1 }]}
                 />
               </TouchableOpacity>
             </View>
@@ -365,10 +269,10 @@ function CreateFocusBlockStackScreen() {
         },
       }}
     >
-      <CreateFocusBlockStack.Screen
+      {/* <CreateFocusBlockStack.Screen
         name='page1'
         component={SelectTimeScreen}
-      ></CreateFocusBlockStack.Screen>
+      ></CreateFocusBlockStack.Screen> */}
       <CreateFocusBlockStack.Screen
         name='page2'
         component={SelectTasksScreen}
@@ -576,14 +480,6 @@ function App() {
   );
 }
 
-// function ModalScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', borderColor: '#DFDFDF', borderWidth: 1, borderRadius: 15, backgroundColor: theme.BACKGROUND_COLOR }}>
-//       <Text style={{ fontSize: 30 }}>This is a modal!</Text>
-//       <Button onPress={() => navigation.goBack()} title="Dismiss" />
-//     </View>
-//   );
-// }
 
 function newTaskModal({ navigation }) {
   return (

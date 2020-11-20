@@ -8,6 +8,9 @@ import {
 } from 'react-native';
 import { Feather, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import commonStyle from '../styles/common.style.js';
+import theme from '../styles/theme.style.js';
+import DurationSelector from '../components/Selectors/DurationSelector.js';
 
 export default class SelectTimeScreen extends React.Component {
   constructor(props) {
@@ -42,55 +45,19 @@ export default class SelectTimeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ width: '100%', height: '80%', flexDirection: 'column' }}>
-        <View
-          style={{
-            flex: 2,
-            backgroundColor: 'white',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}
-        >
-          <Text>Commit yourself today.</Text>
-          <View style={styles.timeSelectorContainer}>
-            <View style={styles.timeSelectorColumn}>
-              <TouchableOpacity
-                style={styles.timeSelectorButtonWrapper}
-                onPress={() => this.add1hour()}
-              >
-                <AntDesign style={styles.timeSelectorButton} name='caretup' />
-              </TouchableOpacity>
-              <Text style={styles.timeSelectorText}>{this.state.hours} hr</Text>
-              <TouchableOpacity
-                style={styles.timeSelectorButtonWrapper}
-                onPress={() => this.subtract1hour()}
-              >
-                <AntDesign style={styles.timeSelectorButton} name='caretdown' />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.timeSelectorColumn}>
-              <TouchableOpacity
-                style={styles.timeSelectorButtonWrapper}
-                onPress={() => this.add10min()}
-              >
-                <AntDesign style={styles.timeSelectorButton} name='caretup' />
-              </TouchableOpacity>
-              <Text style={styles.timeSelectorText}>
-                {this.state.minutes} min
-              </Text>
-              <TouchableOpacity
-                style={styles.timeSelectorButtonWrapper}
-                onPress={() => this.subtract10min()}
-              >
-                <AntDesign style={styles.timeSelectorButton} name='caretdown' />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-        <View style={{ flex: 1 }}>
-          <View style={styles.divider}></View>
-        </View>
-      </View>
+      <View style={{ backgroundColor: theme.BACKGROUND_COLOR }}>
+      <DurationSelector />
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={[commonStyle.solidButton, commonStyle.bottomButton]}
+        onPress={() => {
+          Haptics.impactAsync();
+          this.props.navigation.navigate('DoFocusBlockStackScreen');
+        }}
+      >
+        <Text style={commonStyle.solidButtonText}>finish</Text>
+      </TouchableOpacity>
+    </View>
     );
   }
 }

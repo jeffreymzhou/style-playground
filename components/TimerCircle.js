@@ -51,7 +51,7 @@ export default class WeekTrend extends React.Component {
           <Text style={styles.status}>Doing</Text>
           <Text style={styles.taskTitle}>Stats hw</Text>
         </View>
-        <View style={styles.timerContainer}>
+        {/* <View style={styles.timerContainer}>
           <CountdownCircleTimer
             isPlaying={!this.state.paused}
             duration={this.state.duration}
@@ -68,7 +68,7 @@ export default class WeekTrend extends React.Component {
               </Animated.Text>
             )}
           </CountdownCircleTimer>
-        </View>
+        </View> */}
         <View style={styles.actionButtonContainer}>
           <TouchableOpacity
             onPress={() => {

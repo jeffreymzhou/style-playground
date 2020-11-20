@@ -18,6 +18,9 @@ import * as Haptics from 'expo-haptics';
 import TaskCard3 from '../components/TaskCard/TaskCard3.js';
 // import Animated from 'react-native-reanimated';
 
+import commonStyle from '../styles/common.style.js';
+import theme from '../styles/theme.style';
+
 export default class TaskListScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -87,20 +90,21 @@ export default class TaskListScreen extends React.Component {
   }
 
   render() {
-    // const navigation = useNavigation();
+    
     return (
-      <View
-        style={{
-          width: '95%',
-          height: '100%',
-          flexDirection: 'column',
-          backgroundColor: 'white',
-        }}
-      >
-        {this.taskCardGenerator()}
+      <View style={{ backgroundColor: theme.BACKGROUND_COLOR }}>
+        <ScrollView contentContainerStyle={commonStyle.screenContainerStyle}>
+          <View
+            style={{
+              width: '95%',
+              flexDirection: 'column',
+              backgroundColor: commonStyle.BACKGROUND_COLOR,
+            }}
+          >
+            {this.taskCardGenerator()}
+          </View>
+        </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({});

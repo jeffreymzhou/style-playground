@@ -39,7 +39,8 @@ export default class OrderTasksScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ backgroundColor: theme.BACKGROUND_COLOR }}>
+      <View style={[{flex: 1,
+        flexDirection: 'column'}, { backgroundColor: theme.BACKGROUND_COLOR }]}>
         <ScrollView contentContainerStyle={commonStyle.screenContainerStyle}>
           <View
             style={{

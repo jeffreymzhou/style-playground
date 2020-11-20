@@ -93,7 +93,7 @@ export default class TaskCard extends React.Component {
   render() {
     const borderWidthAnimatedValue = this.state.expandValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [1.5, 3],
+      outputRange: [theme.CARD_BORDER_WIDTH, 3],
     });
     const expandedOrSelected = Animated.add(
       this.state.expandValue,
@@ -109,7 +109,7 @@ export default class TaskCard extends React.Component {
     });
     const containerHeightAnimatedValue = this.state.expandValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [theme.TASK_CARD_HEIGHT + theme.CARD_BORDER_WIDTH * 2, 90],
+      outputRange: [theme.TASK_CARD_HEIGHT + theme.CARD_BORDER_WIDTH*2, 90],
     });
     const durationSelectorHeightAnimatedValue = this.state.expandValue.interpolate(
       {
