@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-planit-dev-222151-authRole",
+      "UnauthRoleArn": "arn:aws:iam::586364907837:role/amplify-planit-dev-222151-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::586364907837:role/amplify-planit-dev-222151-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-planit-dev-222151-deployment",
+      "UnauthRoleName": "amplify-planit-dev-222151-unauthRole",
+      "StackName": "amplify-planit-dev-222151",
+      "StackId": "arn:aws:cloudformation:us-east-1:586364907837:stack/amplify-planit-dev-222151/ad0c2d80-433b-11eb-bb2e-0ada7ccc8ac7",
+      "AmplifyAppId": "d1mqd1rjwg11aa"
+    }
+  }
+}
