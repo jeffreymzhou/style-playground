@@ -1,0 +1,5 @@
+{
+    "httpMethod": "GET",
+    "path": "/categories/a12345",
+    "queryStringParameters": {}
+}

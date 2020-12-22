@@ -1,15 +1,20 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-planit-dev-222151-authRole",
-      "UnauthRoleArn": "arn:aws:iam::586364907837:role/amplify-planit-dev-222151-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::586364907837:role/amplify-planit-dev-222151-authRole",
+      "AuthRoleName": "amplify-planit-dev-95219-authRole",
+      "UnauthRoleArn": "arn:aws:iam::586364907837:role/amplify-planit-dev-95219-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::586364907837:role/amplify-planit-dev-95219-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-planit-dev-222151-deployment",
-      "UnauthRoleName": "amplify-planit-dev-222151-unauthRole",
-      "StackName": "amplify-planit-dev-222151",
-      "StackId": "arn:aws:cloudformation:us-east-1:586364907837:stack/amplify-planit-dev-222151/ad0c2d80-433b-11eb-bb2e-0ada7ccc8ac7",
-      "AmplifyAppId": "d1mqd1rjwg11aa"
+      "DeploymentBucketName": "amplify-planit-dev-95219-deployment",
+      "UnauthRoleName": "amplify-planit-dev-95219-unauthRole",
+      "StackName": "amplify-planit-dev-95219",
+      "StackId": "arn:aws:cloudformation:us-east-1:586364907837:stack/amplify-planit-dev-95219/4b7e82e0-4465-11eb-9755-1266a0dd9289",
+      "AmplifyAppId": "d2dtv9p0meochd"
+    },
+    "categories": {
+      "auth": {
+        "cognitodb243435": {}
+      }
     }
   }
 }

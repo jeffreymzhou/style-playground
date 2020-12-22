@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/categories",
+            "lambdaFunction": "categoryHandler",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "category",
+    "apiName": "category",
+    "functionArns": [
+        {
+            "lambdaFunction": "categoryHandler"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-planit-dev-95219-authRole",
+        "unAuthRoleName": "amplify-planit-dev-95219-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "categoryHandler",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "7af66cad"
+}

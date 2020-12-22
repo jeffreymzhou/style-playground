@@ -1,0 +1,7 @@
+{
+    "tableName": "category",
+    "partitionKeyName": "userId",
+    "partitionKeyType": "S",
+    "sortKeyName": "cdate",
+    "sortKeyType": "N"
+}
