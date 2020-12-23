@@ -3,6 +3,10 @@
     "category": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "task": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   },
   "function": {
@@ -14,6 +18,25 @@
         {
           "category": "storage",
           "resourceName": "category",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        }
+      ]
+    },
+    "taskHandler": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "task",
           "attributes": [
             "Name",
             "Arn"
@@ -41,6 +64,20 @@
         {
           "category": "function",
           "resourceName": "categoryHandler",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "task": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "taskHandler",
           "attributes": [
             "Name",
             "Arn"
