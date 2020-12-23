@@ -161,6 +161,159 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "getTasksFromUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "mYpMAajjsB1TMtGxQxDle6cHfjpwOtjH5IMUgzzs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://h32gfn6gw9.execute-api.us-east-1.amazonaws.com/dev/tasks/a12345",
+							"protocol": "https",
+							"host": [
+								"h32gfn6gw9",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks",
+								"a12345"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createTask",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "mYpMAajjsB1TMtGxQxDle6cHfjpwOtjH5IMUgzzs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"do something\",\n    \"description\": \"just for fun\",\n    \"userId\": \"a12345\",\n    \"category\": \"test\",\n    \"cdate\": 1608649999175,\n    \"mdate\": 1608649999175,\n    \"parentTask\": {\n        \"userId\": \"abc123\",\n        \"cdate\": 1604649999175\n    },\n    \"childTask\": null,\n    \"dueDate\": 1609649999175,\n    \"isComplete\": false,\n    \"taskEventHistory\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h32gfn6gw9.execute-api.us-east-1.amazonaws.com/dev/tasks",
+							"protocol": "https",
+							"host": [
+								"h32gfn6gw9",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTask",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "mYpMAajjsB1TMtGxQxDle6cHfjpwOtjH5IMUgzzs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"do something\",\n    \"description\": \"this one is updated from API\",\n    \"userId\": \"a12345\",\n    \"category\": \"test\",\n    \"cdate\": 1608649999175,\n    \"mdate\": 1608649999175,\n    \"parentTask\": {\n        \"userId\": \"abc123\",\n        \"cdate\": 1604649999175\n    },\n    \"childTask\": null,\n    \"dueDate\": 1609649999175,\n    \"isComplete\": false,\n    \"taskEventHistory\": [\n        {\n            \"start\": 1608649999175,\n            \"end\": 1608749999175,\n            \"cdate: \": 1608649999175\n        },\n        {\n            \"start\": 1608647999175,\n            \"end\": 1608748000175,\n            \"cdate: \": 1608647999175\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h32gfn6gw9.execute-api.us-east-1.amazonaws.com/dev/tasks",
+							"protocol": "https",
+							"host": [
+								"h32gfn6gw9",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteTask",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "mYpMAajjsB1TMtGxQxDle6cHfjpwOtjH5IMUgzzs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"do something\",\n    \"description\": \"this one is updated from API\",\n    \"userId\": \"a12345\",\n    \"category\": \"test\",\n    \"cdate\": 1608649999175,\n    \"mdate\": 1608649999175,\n    \"parentTask\": {\n        \"userId\": \"abc123\",\n        \"cdate\": 1604649999175\n    },\n    \"childTask\": null,\n    \"dueDate\": 1609649999175,\n    \"isComplete\": false,\n    \"taskEventHistory\": [\n        {\n            \"start\": 1608649999175,\n            \"end\": 1608749999175,\n            \"cdate: \": 1608649999175\n        },\n        {\n            \"start\": 1608647999175,\n            \"end\": 1608748000175,\n            \"cdate: \": 1608647999175\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://h32gfn6gw9.execute-api.us-east-1.amazonaws.com/dev/tasks/object/a12345/1608649999175",
+							"protocol": "https",
+							"host": [
+								"h32gfn6gw9",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks",
+								"object",
+								"a12345",
+								"1608649999175"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}
