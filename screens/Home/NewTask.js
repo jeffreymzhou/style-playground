@@ -18,14 +18,14 @@ import { Feather, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Haptics from 'expo-haptics';
 
-import DateSelector from '../components/Selectors/DateSelector.js';
-import DurationSelector from '../components/Selectors/DurationSelector.js';
-import commonStyle from '../styles/common.style.js';
-import theme from '../styles/theme.style.js';
+import DateSelector from '@/components/Selectors/DateSelector.js';
+import DurationSelector from '@/components/Selectors/DurationSelector.js';
+import commonStyle from '@/styles/common.style.js';
+import theme from '@/styles/theme.style.js';
 
-import TimeParser from '../utils/TimeParser';
+import TimeParser from '@/utils/TimeParser';
 
-import { Task } from '../storage/data_schema/Task';
+import { Task } from '@/storage/data_schema/Task';
 
 export default class NewTaskScreen extends React.Component {
   constructor(props) {
@@ -51,10 +51,10 @@ export default class NewTaskScreen extends React.Component {
     return (
       <TouchableOpacity
         activeOpacity={1}
-        // onPress={() => {
-        //   Haptics.impactAsync();
-        //   this.nameTextInput.focus();
-        // }}
+        onPress={() => {
+          Haptics.impactAsync();
+          this.nameTextInput.focus();
+        }}
         style={{
           flexDirection: 'row',
           borderBottomWidth: 1,
@@ -72,9 +72,9 @@ export default class NewTaskScreen extends React.Component {
             paddingTop: 0,
           }}
           selectionColor={theme.PRIMARY_COLOR}
-          // ref={(input) => {
-          //   this.nameTextInput = input;
-          // }}
+          ref={(input) => {
+            this.nameTextInput = input;
+          }}
           multiline={true}
           onChangeText={(text) => this.updateTask(text, 'title')}
           // value={this.state.task ? this.state.task.title : ''}
@@ -256,7 +256,13 @@ export default class NewTaskScreen extends React.Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <View style={{ height: '100%', width: '100%' }}>
+        <View style={{
+          height: '100%',
+          width: '100%',
+          borderTopWidth: 1,
+          borderColor: '#DFDFDF',
+          backgroundColor: theme.BACKGROUND_COLOR,
+        }}>
           {this.nameInput()}
           {this.dueDateInput()}
           {this.durationInput()}

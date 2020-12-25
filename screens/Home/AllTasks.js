@@ -14,16 +14,16 @@ import { useNavigation } from '@react-navigation/native';
 import * as Haptics from 'expo-haptics';
 // import { useNavigation } from '@react-navigation/native';
 // components
+import TaskCard from '@/components/TaskCard/TaskCardPlain.js';
 
-import TaskCard from '../components/TaskCard/TaskCardPlain.js';
 // import Animated from 'react-native-reanimated';
-
 // style
-
-import theme from '../styles/theme.style.js';
-import commonStyle from '../styles/common.style';
+import theme from '@/styles/theme.style.js';
+import commonStyle from '@/styles/common.style';
 
 export default class TaskListScreen extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -35,14 +35,16 @@ export default class TaskListScreen extends React.Component {
     this.updateTasks();
   }
 
+  // fetches all tasks from storage
   updateTasks() {
     this.setState({ tasks: global.storage.getAllTasks() });
   }
 
   navigateOnPress() {
-    this.props.navigation.navigate('CurrentTask');
+    this.props.navigation.navigate('TaskDetails');
   }
 
+  // generates a list of TaskCards after fetching list of tasks from storage
   taskCardGenerator() {
     var taskCards = [];
 
@@ -51,20 +53,22 @@ export default class TaskListScreen extends React.Component {
         <TaskCard
           key={index}
           task={task}
-          onPress={() => {
-            global.storage.deleteTask(task.taskId);
-            this.setState({ tasks: global.storage.getAllTasks() });
-          }}
-          status={'confirmProgress'}
           // onPress={() => {
-          //   this.navigateOnPress();
+            
+          //   // global.storage.deleteTask(task.taskId);
+          //   // this.updateTasks();
           // }}
+          status={'confirmProgress'}
+          onPress={() => {
+            this.navigateOnPress();
+          }}
         />
       );
     });
     return taskCards;
   }
 
+  // renders scrollable view of task cards
   render() {
     // const navigation = useNavigation();
     return (

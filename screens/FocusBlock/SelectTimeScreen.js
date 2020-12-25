@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { Feather, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import commonStyle from '../styles/common.style.js';
-import theme from '../styles/theme.style.js';
-import DurationSelector from '../components/Selectors/DurationSelector.js';
+import commonStyle from '@/styles/common.style.js';
+import theme from '@/styles/theme.style.js';
+import DurationSelector from '@/components/Selectors/DurationSelector.js';
 
 export default class SelectTimeScreen extends React.Component {
   constructor(props) {

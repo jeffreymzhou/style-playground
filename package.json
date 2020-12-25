@@ -1,5 +1,6 @@
 {
   "main": "node_modules/expo/AppEntry.js",
+  "name": "@",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -12,6 +13,7 @@
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.7.2",
     "@react-navigation/drawer": "^5.8.6",
+    "@react-navigation/material-top-tabs": "^5.3.10",
     "@react-navigation/native": "^5.7.1",
     "@react-navigation/stack": "^5.7.1",
     "@reduxjs/toolkit": "^1.4.0",
@@ -28,6 +30,7 @@
     "react-native-reanimated": "^1.9.0",
     "react-native-screens": "^2.9.0",
     "react-native-svg": "12.1.0",
+    "react-native-tab-view": "^2.15.2",
     "react-native-uuid": "^1.4.9",
     "react-native-uuid-generator": "^6.1.1",
     "react-native-vector-icons": "^7.0.0",

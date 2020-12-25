@@ -53,6 +53,7 @@ export default class TaskCard extends React.Component {
         toValue: 1,
         duration: 200,
         easing: Easing.easeOutBack,
+        useNativeDriver: false,
       }).start();
       this.setState({ selected: true });
     }
@@ -65,6 +66,7 @@ export default class TaskCard extends React.Component {
       toValue: 0,
       duration: 100,
       easing: Easing.easeOutBack,
+      useNativeDriver: false,
     }).start();
     this.setState({ selected: false });
     this.setState({ selectedDuration: '' });
@@ -76,6 +78,7 @@ export default class TaskCard extends React.Component {
       toValue: 1,
       duration: 200,
       easing: Easing.easeOutBack,
+      useNativeDriver: false,
     }).start();
     this.setState({ expanded: true });
   }
@@ -86,6 +89,7 @@ export default class TaskCard extends React.Component {
       toValue: 0,
       duration: 150,
       easing: Easing.easeOutBack,
+      useNativeDriver: false,
     }).start();
     this.setState({ expanded: false });
   }

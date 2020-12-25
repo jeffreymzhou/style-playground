@@ -54,10 +54,10 @@ export default class WeekHistory extends React.Component {
     },
   ];
 
-  dateCubeColumn(dateObject, dayOfWeek) {
+  dateCubeColumn(dateObject, dayOfWeek, index) {
     let status = dateObject.status + (dateObject.complete ? 'Complete' : '');
     return (
-      <View style={styles.weekHistoryColumn}>
+      <View key={index} style={styles.weekHistoryColumn}>
         <Text style={styles.weekHistoryFont}>{dateObject.date}</Text>
         <View style={[styles.dateCube, styles[status]]}>
           {dateObject.complete ? (
@@ -82,7 +82,7 @@ export default class WeekHistory extends React.Component {
     var dateCubeColumns = [];
     const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     daysOfWeek.forEach((dayOfWeek, index) => {
-      dateCubeColumns.push(this.dateCubeColumn(dateArray[index], dayOfWeek));
+      dateCubeColumns.push(this.dateCubeColumn(dateArray[index], dayOfWeek, index));
     });
     return dateCubeColumns;
   }

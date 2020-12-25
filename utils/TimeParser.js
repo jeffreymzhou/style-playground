@@ -11,10 +11,25 @@ export default class TimeParser {
     }
   }
 
+  static displayTime(seconds) {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+
+    const hours = (h < 10 ? '0' : '') + h;
+    const minutes = (m < 10 ? '0' : '') + m;
+    const secs = (s < 10 ? '0' : '') + s;
+    return (hours > 0 ? hours + ':' : '') + minutes + ':' + secs;
+  }
+  state = {
+    paused: true,
+    restart: true,
+    duration: 100,
+  };
+
   static minutesToString(m) {
     const hours = Math.floor(m / 60);
     const minutes = m % 60;
-
     return (hours ? hours + ' hr ' : '') + (minutes ? minutes + ' m' : '');
   }
 
@@ -147,6 +162,6 @@ export default class TimeParser {
     const monthString = monthArray[monthIndex];
     const dayOfWeekString = dayOfWeekArray[dayIndex];
     const dateString = dateArray[dateIndex];
-    return dayOfWeekString + ', ' + monthString + ' ' + dateString;
+    return dayOfWeekString + ', ' + dateString;
   }
 }

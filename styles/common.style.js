@@ -1,13 +1,13 @@
 import { StyleSheet } from 'react-native';
 import theme from './theme.style.js';
 export default StyleSheet.create({
-  // containers
 
   screenContainerStyle: {
     backgroundColor: theme.BACKGROUND_COLOR,
     alignItems: 'center',
     // height: '100%',
   },
+
   primaryHeader: {},
   secondaryHeader: {},
   primaryText: {},

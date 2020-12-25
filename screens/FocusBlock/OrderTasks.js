@@ -12,12 +12,12 @@ import { Feather, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Haptics from 'expo-haptics';
 
-import commonStyle from '../styles/common.style.js';
-import theme from '../styles/theme.style.js';
+import commonStyle from '@/styles/common.style.js';
+import theme from '@/styles/theme.style.js';
 
 // components
 
-import TaskCard2 from '../components/TaskCard/TaskCard2.js';
+import TaskCard2 from '@/components/TaskCard/TaskCard2.js';
 // import Animated from 'react-native-reanimated';
 
 export default class OrderTasksScreen extends React.Component {
@@ -38,6 +38,7 @@ export default class OrderTasksScreen extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={[{flex: 1,
         flexDirection: 'column'}, { backgroundColor: theme.BACKGROUND_COLOR }]}>
@@ -59,7 +60,7 @@ export default class OrderTasksScreen extends React.Component {
           style={[commonStyle.solidButton, commonStyle.bottomButton]}
           onPress={() => {
             Haptics.impactAsync();
-            this.props.navigation.navigate('DoFocusBlockStackScreen');
+            navigation.navigate('DoFocusBlock');
           }}
         >
           <Text style={commonStyle.solidButtonText}>finish</Text>

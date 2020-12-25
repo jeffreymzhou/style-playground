@@ -12,14 +12,13 @@ import {
 import { Feather, FontAwesome5, AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as Haptics from 'expo-haptics';
-// import { useNavigation } from '@react-navigation/native';
 // components
 
-import TaskCard3 from '../components/TaskCard/TaskCard3.js';
+import TaskCard3 from '@/components/TaskCard/TaskCard3.js';
 // import Animated from 'react-native-reanimated';
 
-import commonStyle from '../styles/common.style.js';
-import theme from '../styles/theme.style';
+import commonStyle from '@/styles/common.style.js';
+import theme from '@/styles/theme.style';
 
 export default class TaskListScreen extends React.Component {
   constructor(props) {
@@ -31,7 +30,7 @@ export default class TaskListScreen extends React.Component {
   }
 
   navigateOnPress() {
-    this.props.navigation.navigate('CurrentTask');
+    this.props.navigation.navigate('TaskTimer');
   }
 
   taskCardGenerator() {

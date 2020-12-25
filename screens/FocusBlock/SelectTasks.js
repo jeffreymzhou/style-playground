@@ -13,11 +13,11 @@ import { useNavigation } from '@react-navigation/native';
 import * as Haptics from 'expo-haptics';
 
 // components
+import TaskCard from '@/components/TaskCard/TaskCard.js';
 
-import TaskCard from '../components/TaskCard/TaskCard.js';
-
-import commonStyle from '../styles/common.style.js';
-import theme from '../styles/theme.style.js';
+// styles
+import commonStyle from '@/styles/common.style.js';
+import theme from '@/styles/theme.style.js';
 
 export default class SelectTasksScreen extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class SelectTasksScreen extends React.Component {
   taskCardGenerator() {
     var tasks = [];
     for (var i = 0; i < 5; i++) {
-      tasks.push(<TaskCard />);
+      tasks.push(<TaskCard key={i} />);
     }
     return tasks;
   }
@@ -41,6 +41,7 @@ export default class SelectTasksScreen extends React.Component {
   }
 
   render() {
+    const { navigation } = this.props;
     return (
       <View style={{ backgroundColor: theme.BACKGROUND_COLOR, flex: 1,
         flexDirection: 'column', }}>
@@ -61,7 +62,7 @@ export default class SelectTasksScreen extends React.Component {
           style={[commonStyle.solidButton, commonStyle.bottomButton]}
           onPress={() => {
             Haptics.impactAsync();
-            this.props.navigation.navigate('page3');
+            navigation.navigate('OrderTasks');
           }}
         >
           <Text style={commonStyle.solidButtonText}>next</Text>
