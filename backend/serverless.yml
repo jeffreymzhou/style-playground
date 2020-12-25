@@ -23,7 +23,7 @@ provider:
       Resource: "*"
 
   apiKeys:
-    - backendApiKey
+    - backendApiKey2
 
   usagePlan:
     quota:
