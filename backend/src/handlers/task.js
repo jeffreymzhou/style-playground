@@ -1,9 +1,9 @@
-import middy from '@middy/core';
-import jsonBodyParser from '@middy/http-json-body-parser';
-import httpEventNormalizer from '@middy/http-event-normalizer';
-import httpErrorHandler from '@middy/http-error-handler';
+/**
+ * this file contains the lambda handlers for task CRUD operations
+ */
 
-var createError = require('http-errors')
+import middleware from '../common/middleware'
+import createError from 'http-errors'
 
 // initialize basic table info
 const AWS = require('aws-sdk')
@@ -25,7 +25,10 @@ if (process.env.TASKS_TABLE_SECONDARY_INDEX_NAME) {
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-const getTasksByUser = middy(async (event, context) => {
+/**
+ * method to get tasks from a user
+ */
+const getTasksByUser = middleware(async (event, context) => {
     const { userId } = event.pathParameters
 
     let params = {
@@ -49,15 +52,13 @@ const getTasksByUser = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
 
-// read a single task
-const getTask = middy(async (event, context) => {
+/**
+ * method to read a single task by primary key: userId + cdate
+ */
+const getTask = middleware(async (event, context) => {
     const { userId, cdate } = event.pathParameters
 
     const cdateAsNumber = Number.parseInt(cdate)
@@ -86,15 +87,14 @@ const getTask = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
 
-// get task by user and category
-const getTaskByUserAndCategory = middy(async (event, context) => {
+/**
+ * method to get tasks by user and category
+ * it uses the dynamoDB's global secondary index
+ */
+const getTasksByUserAndCategory = middleware(async (event, context) => {
     const { userId, category } = event.pathParameters
 
     let params = {
@@ -121,17 +121,16 @@ const getTaskByUserAndCategory = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
 
 
-// Note: this method handles both "creation" and "update"
-// always pass the whole document when updating the doc
-const creatTask = middy(async (event, context) => {
+/**
+ * method to create a task
+ * Note: this method handles both "creation" and "update"
+ * always pass the whole document when updating the doc
+ */
+const creatTask = middleware(async (event, context) => {
     const item = event.body
 
     let params = {
@@ -149,13 +148,12 @@ const creatTask = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
-const deleteTask = middy(async (event, context) => {
+/**
+ * method to delete a task by primary key: userId + cdate
+ */
+const deleteTask = middleware(async (event, context) => {
     const { userId, cdate } = event.pathParameters
     console.log(userId, ":", cdate)
 
@@ -185,11 +183,6 @@ const deleteTask = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
-
-export { getTasksByUser, getTask, getTaskByUserAndCategory, creatTask, deleteTask }
+export { getTasksByUser, getTask, getTasksByUserAndCategory, creatTask, deleteTask }

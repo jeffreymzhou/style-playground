@@ -112,7 +112,7 @@ functions:
           private: true
 
 
-  # functions to handle Category requets
+  # functions to handle task requests
   getTasksByUser:
     handler: src/handlers/task.getTasksByUser
     events:
@@ -123,7 +123,7 @@ functions:
           private: true
 
   getTasksByUserAndCategory:
-    handler: src/handlers/task.getTaskByUserAndCategory
+    handler: src/handlers/task.getTasksByUserAndCategory
     events:
       - http:
           path: /tasks/{userId}/category/{category}

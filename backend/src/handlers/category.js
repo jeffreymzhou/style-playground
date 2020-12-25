@@ -1,11 +1,9 @@
-import middy from '@middy/core';
-import jsonBodyParser from '@middy/http-json-body-parser';
-import httpEventNormalizer from '@middy/http-event-normalizer';
-import httpErrorHandler from '@middy/http-error-handler';
+/**
+ * this file contains the lambda handlers for category CRUD operations
+ */
 
 import middleware from '../common/middleware'
-
-var createError = require('http-errors')
+import createError from 'http-errors'
 
 // initialize basic table info
 const AWS = require('aws-sdk')
@@ -15,13 +13,16 @@ if (process.env.TABLE_REGION) {
     AWS.config.update({ region: 'us-east-1' });
 }
 
-let tableName = "categories-dev"
+var tableName = "categories-dev"
 if (process.env.CATEGORIES_TABLE) {
     tableName = process.env.CATEGORIES_TABLE;
 }
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
+/**
+ * method to get categories by user
+ */
 const getCategoriesByUser = middleware(async (event, context) => {
     const { userId } = event.pathParameters
 
@@ -49,8 +50,10 @@ const getCategoriesByUser = middleware(async (event, context) => {
 })
 
 
-// read a single category
-const getCategory = middy(async (event, context) => {
+/**
+ * method to get a single category by primary key: userID + cdate
+ */
+const getCategory = middleware(async (event, context) => {
     const { userId, cdate } = event.pathParameters
 
     const cdateAsNumber = Number.parseInt(cdate)
@@ -79,17 +82,14 @@ const getCategory = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
-
-
-// Note: this method handles both "creation" and "update"
-// always pass the whole document when updating the doc
-const creatCategory = middy(async (event, context) => {
+/**
+ * memthod to create a category
+ * Note: this method handles both "creation" and "update"
+ * always pass the whole document when updating the doc
+ */
+const creatCategory = middleware(async (event, context) => {
     const item = event.body
 
     let params = {
@@ -107,13 +107,12 @@ const creatCategory = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
-const deleteCategory = middy(async (event, context) => {
+/**
+ * method to delete a category by primary key
+ */
+const deleteCategory = middleware(async (event, context) => {
     const { userId, cdate } = event.pathParameters
     console.log(userId, ":", cdate)
 
@@ -143,11 +142,7 @@ const deleteCategory = middy(async (event, context) => {
         console.error(error);
         throw new createError.InternalServerError(error);
     }
-}).use([
-    jsonBodyParser(),
-    httpEventNormalizer(),
-    httpErrorHandler(),
-])
+})
 
 
 export { getCategoriesByUser, getCategory, creatCategory, deleteCategory }
