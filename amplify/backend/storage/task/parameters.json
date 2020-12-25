@@ -1,7 +1,0 @@
-{
-    "tableName": "task",
-    "partitionKeyName": "userId",
-    "partitionKeyType": "S",
-    "sortKeyName": "cdate",
-    "sortKeyType": "N"
-}
