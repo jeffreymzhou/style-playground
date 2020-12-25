@@ -1,0 +1,68 @@
+  #CloudFormation template defines DynamoDB table
+  Resources: 
+    categoryTable:    # Logical Id of the resource
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.categoriesTable}
+        AttributeDefinitions:
+          - 
+            AttributeName: "userId"
+            AttributeType: "S"
+          - 
+            AttributeName: "cdate"
+            AttributeType: "N"
+
+        KeySchema:
+          - 
+            AttributeName: "userId"    # Partition Key
+            KeyType: "HASH"
+          - 
+            AttributeName: "cdate"    # Sort Key
+            KeyType: "RANGE"
+
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
+    taskTable:    # Logical Id of the resource
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tasksTable}
+        AttributeDefinitions:
+          - 
+            AttributeName: "userId"
+            AttributeType: "S"
+          - 
+            AttributeName: "cdate"
+            AttributeType: "N"
+          - 
+            AttributeName: "category"
+            AttributeType: "S"
+
+        KeySchema:
+          - 
+            AttributeName: "userId"    # Partition Key
+            KeyType: "HASH"
+          - 
+            AttributeName: "cdate"    # Sort Key
+            KeyType: "RANGE"
+
+        GlobalSecondaryIndexes:
+            - IndexName: ${self:custom.taskTableSecondaryIndexName}
+              KeySchema:
+                - 
+                  AttributeName: "userId"
+                  KeyType: HASH
+                - 
+                  AttributeName: "category"
+                  KeyType: RANGE
+              Projection:
+                ProjectionType: ALL
+              
+              ProvisionedThroughput:
+                ReadCapacityUnits: 5
+                WriteCapacityUnits: 5
+
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
