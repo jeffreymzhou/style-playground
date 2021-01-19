@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "30d69896-e8cb-4d29-a672-bd946babfa00",
+		"name": "planit-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "getCategoriesFromUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/categories/a12345",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"categories",
+								"a12345"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "getCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/categories/a12345/111",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"categories",
+								"a12345",
+								"111"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/categories/a12345/1112",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"categories",
+								"a12345",
+								"1112"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"a12345\",\n    \"cdate\": 1112,\n    \"description\": \"created from API\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/categories",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"categories"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"a12345\",\n    \"cdate\": 111,\n    \"description\": \"updated again from API\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/categories",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"categories"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "task",
+			"item": [
+				{
+					"name": "getTasksFromUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/tasks/a12345",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks",
+								"a12345"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "getTasksFromUserByCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/tasks/a12345/category/study",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks",
+								"a12345",
+								"category",
+								"study"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "getTask",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/tasks/a12345/123456",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks",
+								"a12345",
+								"123456"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "createTask",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"category\": \"study\",\n        \"description\": \"test entry from API\",\n        \"userId\": \"a12345\",\n        \"cdate\": 1234\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/tasks",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "updateTask",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"category\": \"test\",\n        \"description\": \"test entry updated from API\",\n        \"userId\": \"a12345\",\n        \"cdate\": 1234\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/tasks",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTask",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"type": "text",
+								"value": "t0vfVKeeLc8fRHfsSWKth3dF9ZX42YpR8t6UOh4D"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://44uhpifxl5.execute-api.us-east-1.amazonaws.com/dev/tasks/a12345/1234",
+							"protocol": "https",
+							"host": [
+								"44uhpifxl5",
+								"execute-api",
+								"us-east-1",
+								"amazonaws",
+								"com"
+							],
+							"path": [
+								"dev",
+								"tasks",
+								"a12345",
+								"1234"
+							]
+						},
+						"description": "get a list of categories from a user"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

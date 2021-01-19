@@ -8,6 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@middy/core": "^1.5.0",
+    "@middy/http-error-handler": "^1.5.0",
+    "@middy/http-event-normalizer": "^1.5.0",
+    "@middy/http-json-body-parser": "^1.5.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.7.2",
     "@react-navigation/drawer": "^5.8.6",
@@ -27,12 +31,15 @@
     "react-native-screens": "^2.9.0",
     "react-native-svg": "12.1.0",
     "react-native-vector-icons": "^7.0.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "serverless-bundle": "^4.1.0",
+    "serverless-pseudo-parameters": "^2.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@types/react": "~16.9.41",
     "@types/react-native": "~0.62.13",
+    "jest": "^26.6.3",
     "typescript": "~3.9.5"
   },
   "private": true
