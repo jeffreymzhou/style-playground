@@ -12,10 +12,10 @@ export default class FocusRecommendation extends React.Component {
         <View style={styles.divider}></View>
         <View style={{flex: 4, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={{color: '#8696D2', fontWeight: '500', fontSize: 23, lineHeight: 30}}>
-            2 hours of focus
+            2 hrs of focus
           </Text>
           <Text style={{color: '#777777'}}>
-            is all you need to succeed today.
+            recommended to stay on track
           </Text>
         </View>
         <View style={styles.divider}></View>

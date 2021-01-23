@@ -1,44 +1,31 @@
 import * as React from 'react';
-import * as Progress from 'react-native-progress';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   Animated,
-  Easing,
-  Button,
 } from 'react-native';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
-import { useNavigation } from '@react-navigation/native';
-// import { AntDesign } from '@expo/vector-icons'
-// import { MaterialIcons } from '@expo/vector-icons'
-// import { Feather } from '@expo/vector-icons'
-import { Feather, FontAwesome5 } from '@expo/vector-icons';
-// import Animated from 'react-native-reanimated';
+import { Feather, } from '@expo/vector-icons';
 import * as Haptics from 'expo-haptics';
 
-export default class WeekTrend extends React.Component {
-  displayTime(seconds) {
-    const h = Math.floor(seconds / 3600);
-    const m = Math.floor((seconds % 3600) / 60);
-    const s = seconds % 60;
+import TimeParser from '@/utils/TimeParser.js';
 
-    const hours = (h < 10 ? '0' : '') + h;
-    const minutes = (m < 10 ? '0' : '') + m;
-    const secs = (s < 10 ? '0' : '') + s;
-    return (hours > 0 ? hours + ':' : '') + minutes + ':' + secs;
-  }
+export default class TaskTimer extends React.Component {
   state = {
     paused: true,
     restart: true,
     duration: 100,
   };
-
   render() {
     return (
       <View style={styles.container}>
+
+        {/* title  */}
         <View style={styles.titleContainer}>
+
+          {/* back button */}
           <TouchableOpacity
             style={styles.backButtonWrapper}
             onPress={() => {
@@ -48,9 +35,12 @@ export default class WeekTrend extends React.Component {
           >
             <Feather style={styles.backButton} name='chevron-left' />
           </TouchableOpacity>
+
           <Text style={styles.status}>Doing</Text>
           <Text style={styles.taskTitle}>Stats hw</Text>
         </View>
+
+        {/* timer circle  */}
         <View style={styles.timerContainer}>
           <CountdownCircleTimer
             isPlaying={!this.state.paused}
@@ -64,11 +54,13 @@ export default class WeekTrend extends React.Component {
               <Animated.Text
                 style={{ ...styles.remainingTime, color: animatedColor }}
               >
-                {this.displayTime(remainingTime)}
+                {TimeParser.displayTime(remainingTime)}
               </Animated.Text>
             )}
           </CountdownCircleTimer>
         </View>
+
+        {/* buttons: resume, extend, finish */}
         <View style={styles.actionButtonContainer}>
           <TouchableOpacity
             onPress={() => {
@@ -108,43 +100,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#ecf0f1',
-    width: '90%',
-    paddingBottom: 30,
-  },
-  progressBarContainer: {
-    flex: 0.5,
-    // backgroundColor: 'grey',
     width: '100%',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  progressBarRow: {
-    // flex: 1,
-    // borderWidth: 2,
-  },
-  progressBarTextRow: {
-    // flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingLeft: 5,
-    paddingRight: 5,
-    // borderWidth: 2,
-  },
-  progressBarText: {
-    fontSize: 13,
-    color: '#989898',
+    padding: 10,
+    paddingBottom: 30
   },
   titleContainer: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
     width: '100%',
-    // backgroundColor: 'grey',
   },
   timerContainer: {
     flex: 4,
-    // backgroundColor: 'grey',
     justifyContent: 'center',
   },
   remainingTime: {
@@ -154,7 +121,6 @@ const styles = StyleSheet.create({
     flex: 3,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    // backgroundColor: 'pink',
     width: '100%',
   },
   actionButton: {
@@ -185,7 +151,6 @@ const styles = StyleSheet.create({
   backButtonWrapper: {
     position: 'absolute',
     left: 10,
-    // backgroundColor: 'black',
     width: '30%',
     height: '50%',
   },

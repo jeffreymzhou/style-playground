@@ -44,6 +44,7 @@ export default class TaskCard2 extends React.Component {
       toValue: 1,
       duration: 200,
       easing: Easing.easeOutBack,
+      useNativeDriver: false
     }).start();
     this.setState({ selected: true });
     this.setState({ selectedOrder: 1 });
@@ -55,6 +56,7 @@ export default class TaskCard2 extends React.Component {
       toValue: 0,
       duration: 100,
       easing: Easing.easeOutBack,
+      useNativeDriver: false
     }).start();
     this.setState({ selected: false });
     this.setState({ selectedOrder: '' });

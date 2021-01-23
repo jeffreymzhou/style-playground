@@ -17,6 +17,9 @@ export default {
   DARK_GREY_COLOR: 'rgb(168, 168, 168)',
 
   LIGHT_BLUE_COLOR: 'rgb(241, 244, 255)',
+  LIGHT_VIOLET_COLOR: 'rgb(191, 157, 184)',
+
+  GREEN_COLOR: 'rgb(155, 233, 186)',
 
   BACKGROUND_COLOR: 'white',
 
@@ -25,9 +28,11 @@ export default {
 
   // card settings
   CARD_BORDER_RADIUS: 8,
-  CARD_BORDER_WIDTH: 1.5,
+  CARD_BORDER_WIDTH: 1,
   CARD_BORDER_COLOR: 'rgb(238,238,238)',
   CARD_FILL_COLOR: 'rgb(244, 244, 244)',
+
+  TASK_CIRCLE_HEIGHT: 25,
 
   // task card settings
   TASK_CARD_HEIGHT: 60,

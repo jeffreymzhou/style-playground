@@ -1,6 +1,13 @@
 import { StyleSheet } from 'react-native';
 import theme from './theme.style.js';
 export default StyleSheet.create({
+
+  screenContainerStyle: {
+    backgroundColor: theme.BACKGROUND_COLOR,
+    alignItems: 'center',
+    // height: '100%',
+  },
+
   primaryHeader: {},
   secondaryHeader: {},
   primaryText: {},
@@ -26,12 +33,61 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   taskCircle: {
-    height: 25,
-    width: 25,
-    borderRadius: 25 / 2,
+    height: theme.TASK_CIRCLE_HEIGHT,
+    width: theme.TASK_CIRCLE_HEIGHT,
+    borderRadius: theme.TASK_CIRCLE_HEIGHT / 2,
   },
   center: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  // buttons
+  solidButton: {
+    height: 60,
+    width: '100%',
+    backgroundColor: theme.PRIMARY_COLOR,
+    alignSelf: 'center',
+    borderRadius: 7,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  outlineButton: {
+    height: 60,
+    width: '100%',
+    backgroundColor: theme.BACKGROUND_COLOR,
+    alignSelf: 'center',
+    borderRadius: 7,
+    borderWidth: 1,
+    borderColor: theme.SECONDARY_COLOR,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  warningButton: {
+    height: 60,
+    width: '100%',
+    backgroundColor: theme.BACKGROUND_COLOR,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  solidButtonText: {
+    color: theme.BACKGROUND_COLOR,
+    fontSize: 24,
+    fontWeight: '500',
+  },
+  outlineButtonText: {
+    color: theme.SECONDARY_COLOR,
+    fontSize: 24,
+    fontWeight: '500',
+  },
+  warningButtonText: {
+    color: theme.LIGHT_VIOLET_COLOR,
+    fontSize: 24,
+    fontWeight: '500',
+  },
+  bottomButton: {
+    position: 'absolute',
+    bottom: 20,
+    width: '90%',
   },
 });
