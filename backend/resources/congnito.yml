@@ -1,0 +1,55 @@
+  #CloudFormation template defines cognito
+Resources:
+    serviceUserPool:
+      Type: AWS::Cognito::UserPool
+      Properties:
+        UserPoolName: social-login-user-pool-${opt:stage, self:provider.stage}
+        UsernameAttributes:
+          - email
+        AutoVerifiedAttributes:
+          - email
+
+    serviceUserPoolClient:
+      Type: AWS::Cognito::UserPoolClient
+      Properties:
+        ClientName: social-login-user-pool-client-${opt:stage, self:provider.stage}
+        AllowedOAuthFlows:
+          - code
+        AllowedOAuthFlowsUserPoolClient: true
+        AllowedOAuthScopes:
+          - email
+          - openid
+          - aws.cognito.signin.user.admin
+        UserPoolId:
+          Ref: serviceUserPool
+        CallbackURLs: 
+          - exp://127.0.0.1:19000/--/
+        LogoutURLs:
+          - exp://127.0.0.1:19000/--/
+        GenerateSecret: false
+        SupportedIdentityProviders: 
+          - Google
+
+    serviceUserPoolDomain:
+      Type: AWS::Cognito::UserPoolDomain 
+      Properties:
+        UserPoolId: 
+          Ref: serviceUserPool
+        Domain: planit-social-login-${opt:stage, self:provider.stage}
+
+
+    serviceUserPoolIdentityProvider:
+      Type: AWS::Cognito::UserPoolIdentityProvider
+      Properties: 
+        ProviderName: Google
+        AttributeMapping:
+          email: emailAddress
+        ProviderDetails:
+        # client id and secret are credentials from goole developer console
+        # create the credential from google developer console and update here
+          client_id: 501943474858-avp3vnn6kfm445btc2rmvdaghvb75ens.apps.googleusercontent.com
+          client_secret: AtOLaVZtjHRApe5uDuXIfnth
+          authorize_scopes: email openid
+        ProviderType: Google
+        UserPoolId: 
+          Ref: serviceUserPool

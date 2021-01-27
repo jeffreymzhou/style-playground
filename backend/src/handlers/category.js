@@ -41,6 +41,9 @@ const getCategoriesByUser = middleware(async (event, context) => {
         const result = await dynamodb.query(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result.Items)
         }
     } catch (error) {
@@ -76,6 +79,9 @@ const getCategory = middleware(async (event, context) => {
         const result = await dynamodb.get(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result)
         }
     } catch (error) {
@@ -101,6 +107,9 @@ const creatCategory = middleware(async (event, context) => {
         const result = await dynamodb.put(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result)
         }
     } catch (error) {
@@ -136,6 +145,9 @@ const deleteCategory = middleware(async (event, context) => {
         const result = await dynamodb.delete(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result)
         }
     } catch (error) {
