@@ -12,9 +12,24 @@ provider:
   name: aws
   runtime: nodejs12.x
   profile: planit
-  timeout: 30
+  timeout: 28
   stage: ${opt:stage, 'dev'}
   region: us-east-1
+
+  httpApi:
+    cors: true
+    authorizers:
+      serviceAuthorizer:
+        identitySource: $request.header.Authorization
+        issuerUrl: # authentication url to get the token
+          Fn::Join:
+          - ''
+          - - 'https://cognito-idp.'
+            - '${opt:region, self:provider.region}'
+            - '.amazonaws.com/'
+            - Ref: serviceUserPool
+        audience:
+          - Ref: serviceUserPoolClient
 
   iamRoleStatements:
     - Effect: "Allow"
@@ -53,6 +68,9 @@ custom:
     linting: false
 
 functions:
+  #############################################################
+  # NOTE: those endpoints are on REST API and require API key #
+  #############################################################
   # functions to handle Category requets
   getCategoriesByUser:
     handler: src/handlers/category.getCategoriesByUser
@@ -149,6 +167,96 @@ functions:
           cors: true
           private: true
 
+
+  ###########################################################################
+  # NOTE: those APIs are on HTTP API and require AWS cognito authentication #
+  ###########################################################################
+  getCategoriesByUserWithCognito:
+    handler: src/handlers/category.getCategoriesByUser
+    events:
+      - httpApi:
+          path: /categories/{userId}
+          method: get
+          authorizer: serviceAuthorizer
+
+  getCategoryWithCognito:
+    handler: src/handlers/category.getCategory
+    events:
+      - httpApi:
+          path: /categories/{userId}/{cdate}
+          method: get
+          authorizer: serviceAuthorizer
+
+  # this one handles both creation and update
+  creatCategoryWithCognito:
+    handler: src/handlers/category.creatCategory
+    events:
+      - httpApi:
+          path: /categories
+          method: post
+          authorizer: serviceAuthorizer
+      - httpApi:
+          path: /categories
+          method: put
+          cors: true
+          authorizer: serviceAuthorizer
+
+  deleteCategoryWithCognito:
+    handler: src/handlers/category.deleteCategory
+    events:
+      - httpApi:
+          path: /categories/{userId}/{cdate}
+          method: delete
+          authorizer: serviceAuthorizer
+
+
+  # functions to handle task requests
+  getTasksByUserWithCognito:
+    handler: src/handlers/task.getTasksByUser
+    events:
+      - httpApi:
+          path: /tasks/{userId}
+          method: get
+          authorizer: serviceAuthorizer
+
+  getTasksByUserAndCategoryWithCognito:
+    handler: src/handlers/task.getTasksByUserAndCategory
+    events:
+      - httpApi:
+          path: /tasks/{userId}/category/{category}
+          method: get
+          authorizer: serviceAuthorizer
+
+  getTaskWithCognito:
+    handler: src/handlers/task.getTask
+    events:
+      - httpApi:
+          path: /tasks/{userId}/{cdate}
+          method: get
+          authorizer: serviceAuthorizer
+
+  # this one handles both creation and update
+  creatTaskWithCognito:
+    handler: src/handlers/task.creatTask
+    events:
+      - httpApi:
+          path: /tasks
+          method: post
+          authorizer: serviceAuthorizer
+      - httpApi:
+          path: /tasks
+          method: put
+          authorizer: serviceAuthorizer
+
+  deleteTaskWithCognito:
+    handler: src/handlers/task.deleteTask
+    events:
+      - httpApi:
+          path: /tasks/{userId}/{cdate}
+          method: delete
+          authorizer: serviceAuthorizer
+
 resources:
   - ${file(resources/dynamoDB.yml)}
+  - ${file(resources/congnito.yml)}
 

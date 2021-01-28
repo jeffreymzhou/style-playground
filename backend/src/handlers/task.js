@@ -46,6 +46,9 @@ const getTasksByUser = middleware(async (event, context) => {
         const result = await dynamodb.query(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result.Items)
         }
     } catch (error) {
@@ -81,6 +84,9 @@ const getTask = middleware(async (event, context) => {
         const result = await dynamodb.get(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result)
         }
     } catch (error) {
@@ -115,6 +121,9 @@ const getTasksByUserAndCategory = middleware(async (event, context) => {
         const result = await dynamodb.query(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result.Items)
         }
     } catch (error) {
@@ -142,6 +151,9 @@ const creatTask = middleware(async (event, context) => {
         const result = await dynamodb.put(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result)
         }
     } catch (error) {
@@ -177,6 +189,9 @@ const deleteTask = middleware(async (event, context) => {
         const result = await dynamodb.delete(params).promise();
         return {
             statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(result)
         }
     } catch (error) {
